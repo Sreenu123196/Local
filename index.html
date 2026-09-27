@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic AI Exam</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <strong>Agentic AI — 150 MCQ Assessment</strong>
+    <span class="sub" id="candidateLabel">Turns 34–36</span>
+  </div>
+  <div class="timer" id="timer" aria-live="polite" title="Time remaining">
+    <span class="timer-label">Time left</span>
+    <span class="timer-value" id="timerValue">02:30:00</span>
+  </div>
+</header>
+
+<!-- Start screen -->
+<main id="startScreen" class="screen card narrow">
+  <h1>Agentic AI Assessment</h1>
+  <p class="muted">Guardrails &amp; Human-in-the-Loop · Multi-Agent Systems · Agent Observability</p>
+  <ul class="facts">
+    <li><b>150</b> questions</li>
+    <li><b>150</b> marks</li>
+    <li><b>150</b> minutes</li>
+  </ul>
+  <h2>Instructions</h2>
+  <ol>
+    <li>Select one correct answer (A, B, C or D) for each question.</li>
+    <li>The timer at the top right starts when you begin and cannot be paused.</li>
+    <li>Use <em>Mark for review</em> to flag questions you want to revisit.</li>
+    <li>The exam is submitted automatically when the time runs out.</li>
+    <li>Your progress is saved in this browser, so a page refresh will not lose your answers.</li>
+  </ol>
+  <label class="field">Candidate name
+    <input id="candidateName" type="text" placeholder="Enter your name" autocomplete="name">
+  </label>
+  <button id="startBtn" class="btn primary big">Start exam</button>
+</main>
+
+<!-- Exam screen -->
+<div id="examScreen" class="screen exam hidden">
+  <main class="card question-card">
+    <div class="q-meta">
+      <span id="qSection" class="section-tag"></span>
+      <span id="qCounter" class="muted"></span>
+    </div>
+    <h2 id="qText" class="q-text"></h2>
+    <div id="options" class="options" role="radiogroup"></div>
+    <div class="q-actions">
+      <button id="prevBtn" class="btn">← Previous</button>
+      <button id="clearBtn" class="btn ghost">Clear response</button>
+      <button id="reviewBtn" class="btn ghost">Mark for review</button>
+      <button id="nextBtn" class="btn primary">Save &amp; next →</button>
+    </div>
+  </main>
+
+  <aside class="card palette-card">
+    <div class="stats" id="stats"></div>
+    <div class="legend">
+      <span><i class="dot answered"></i>Answered</span>
+      <span><i class="dot review"></i>Review</span>
+      <span><i class="dot visited"></i>Not answered</span>
+      <span><i class="dot"></i>Not visited</span>
+    </div>
+    <div id="palette" class="palette"></div>
+    <button id="submitBtn" class="btn danger full">Submit exam</button>
+  </aside>
+</div>
+
+<!-- Result screen -->
+<main id="resultScreen" class="screen card narrow hidden">
+  <h1>Exam submitted</h1>
+  <p id="resultNote" class="muted"></p>
+  <div id="resultSummary" class="result-grid"></div>
+  <table class="section-table">
+    <thead><tr><th>Section</th><th>Questions</th><th>Attempted</th><th id="scoreHead" class="hidden">Score</th></tr></thead>
+    <tbody id="sectionRows"></tbody>
+  </table>
+  <div class="row">
+    <button id="downloadBtn" class="btn primary">Download responses (CSV)</button>
+    <button id="restartBtn" class="btn ghost">Start a new attempt</button>
+  </div>
+</main>
+
+<!-- Confirm dialog -->
+<dialog id="confirmDialog">
+  <h3>Submit the exam?</h3>
+  <p id="confirmText"></p>
+  <div class="row end">
+    <button id="cancelSubmit" class="btn">Keep working</button>
+    <button id="confirmSubmit" class="btn danger">Submit</button>
+  </div>
+</dialog>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
